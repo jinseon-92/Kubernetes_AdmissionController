@@ -157,7 +157,7 @@ CMD ["python", "-u", "test.py"]
 ---
 
 
-##### requirements.txt 작성
+##### Requirements.txt 작성
 
 ```
 vi requirements.txt
