@@ -15,7 +15,7 @@ _출처: https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-c
 
 
 ### 실습
-
+---
 
 - Image Repogitory를 검증하여 jinseon.harbor.dev 경로와 다른 Repogitory 경로로 요청할 경우 수정하도록 설정
 - jinseon.harbor.prd Repogitory Image 사용 시 요청을 반려하도록 설정
