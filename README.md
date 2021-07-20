@@ -15,10 +15,10 @@ _출처: https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-c
 ### 실습
 
 
-##### Image Repogitory를 검증하여 jinseon.harbor.dev 경로와 다른 Repogitory 경로로 요청할 경우 수정하도록 설정
-##### jinseon.harbor.prd Repogitory Image 사용 시 요청을 반려하도록 설정
+- Image Repogitory를 검증하여 jinseon.harbor.dev 경로와 다른 Repogitory 경로로 요청할 경우 수정하도록 설정
+- jinseon.harbor.prd Repogitory Image 사용 시 요청을 반려하도록 설정
 
-- Admission Controller와 Webhook 서버 간 SSL 통신 구현
+##### Admission Controller와 Webhook 서버 간 SSL 통신 구현
 ```
 mkdir mutating
 cd mutating
@@ -51,7 +51,7 @@ openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out s
 ---
 
 
-- Webhook 서버 구현 (Python_Flask)
+##### Webhook 서버 구현 (Python_Flask)
 
 ```
 vi test.py
@@ -135,7 +135,7 @@ app.run(host='0.0.0.0', debug=True, ssl_context=context)
 ---
 
 
-- Dockerfile 작성
+##### Dockerfile 작성
 
 ```
 vi Dockerfile
@@ -155,7 +155,7 @@ CMD ["python", "-u", "test.py"]
 ---
 
 
-- requirements.txt 작성
+##### requirements.txt 작성
 
 ```
 vi requirements.txt
@@ -165,7 +165,7 @@ flask
 ---
 
 
-- 도커 Image Build
+##### 도커 Image Build
 
 ```
 docker build -t [이미지:버전]     # ex) jinseon/mutating:1.0
@@ -174,7 +174,7 @@ docker push [이미지:버전]
 ---
 
 
-- 쿠버네티스 클러스터에 Webhook 리소스 배포 (service, pod)
+##### 쿠버네티스 클러스터에 Webhook 리소스 배포 (service, pod)
 
 ```
 vi mutating.yaml
@@ -210,7 +210,7 @@ kubectl apply -f mutating.yaml
 ---
 
 
-- MutatingWebhookConfiguration 작성
+##### MutatingWebhookConfiguration 작성
 
 ```
 cat > mutatingwebhook.yaml <<EOF
@@ -244,7 +244,7 @@ kubectl apply -f mutatingwebhook.yaml
 ---
 
 
-- 테스트 Deployment 리소스 배포
+##### 테스트 Deployment 리소스 배포
 
 ```
 vi deployment.yaml
