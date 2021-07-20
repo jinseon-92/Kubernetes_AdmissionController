@@ -7,4 +7,4 @@
 
 <img width="900" alt="admission-controller-phases" src="https://user-images.githubusercontent.com/58098112/126321675-3fd5bf6b-1dd8-482a-85e9-4f33492a50d9.png">
 
-_출처: https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers
+_출처: https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers_
