@@ -12,6 +12,8 @@ _출처: https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-c
 
 
 
+
+
 ### 실습
 
 
