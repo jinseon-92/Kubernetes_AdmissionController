@@ -44,6 +44,7 @@ openssl req -new -key server.key -out server.csr -config server.conf
 
 openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 100000 -extensions v3_req -extfile server.conf
 ```
+---
 
 
 - Webhook 서버 구현 (Python_Flask)
@@ -127,6 +128,7 @@ context.load_cert_chain('./server.crt', './server.key')
 
 app.run(host='0.0.0.0', debug=True, ssl_context=context)
 ```
+---
 
 
 - Dockerfile 작성
@@ -146,6 +148,7 @@ ADD ca.crt .
 
 CMD ["python", "-u", "test.py"]
 ```
+---
 
 
 - requirements.txt 작성
@@ -155,6 +158,7 @@ vi requirements.txt
 
 flask
 ```
+---
 
 
 - 도커 Image Build
@@ -163,6 +167,8 @@ flask
 docker build -t [이미지:버전]     # ex) jinseon/mutating:1.0
 docker push [이미지:버전]
 ```
+---
+
 
 - 쿠버네티스 클러스터에 Webhook 리소스 배포 (service, pod)
 
@@ -197,6 +203,7 @@ spec:
 
 kubectl apply -f mutating.yaml
 ```
+---
 
 
 - MutatingWebhookConfiguration 작성
@@ -230,6 +237,7 @@ EOF
 
 kubectl apply -f mutatingwebhook.yaml
 ```
+---
 
 
 - 테스트 Deployment 리소스 배포
